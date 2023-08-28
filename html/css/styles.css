@@ -1,6 +1,13 @@
 body 
 {
-    background-color: #707070;
+	/* Sets background image and makes it look nice; just a temp
+	 * pic until we decide on one  */
+	background-image: url("../images/loginBackground.png");
+
+	width: 94%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
 }
 
 #title 
