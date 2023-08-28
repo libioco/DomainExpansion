@@ -1,3 +1,5 @@
+create database COP4331;
+
 use COP4331;
 
 Create Table User (
