@@ -1,18 +1,21 @@
 <?php
 	$inData = getRequestInfo();
 	
-	$color = $inData["color"];
+	$firstName = $inData["firstName"];
+	$lastName = $inData["lastName"];
+	$phone = $inData["phone"];
+	$email = $inData["email"];
 	$userId = $inData["userId"];
 
-	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+	$conn = new mysqli("localhost", "Admin", "domainExpans1on", "COP4331");
 	if ($conn->connect_error) 
 	{
 		returnWithError( $conn->connect_error );
 	} 
 	else
 	{
-		$stmt = $conn->prepare("INSERT into Colors (UserId,Name) VALUES(?,?)");
-		$stmt->bind_param("ss", $userId, $color);
+		$stmt = $conn->prepare("INSERT into Contact (FirstName,LastName,Phone,Email,UserID) VALUES(?,?,?,?,?)");
+		$stmt->bind_param("ss", $firstName, $lastName, $phone, $email, $userId);
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
