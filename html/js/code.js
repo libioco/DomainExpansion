@@ -58,6 +58,40 @@ function doLogin()
 
 }
 
+/*
+function doRegister()
+{
+	firstName = document.getElementById("firstName").value;
+	lastName = document.getElementById("lastName").value;
+	let login = document.getElementById("login").value;
+	let password = document.getElementById("password").value;
+
+	let url = urlBase + '/Register.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	xhr.onreadystatechange = function() 
+
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				saveCookie();
+
+				window.location.href = "index.html";
+			}
+		};
+	}
+	catch(err)
+	{
+		document.getElementById("registrationResult").innerHTML = err.message;
+	}
+}
+*/
+
 function saveCookie()
 {
 	let minutes = 20;
