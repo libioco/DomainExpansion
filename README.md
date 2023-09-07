@@ -4,6 +4,6 @@ DomainExpansion is a contact manager web app built as the small project for COP4
 ## Team Members
 * Alex E Cruz - Frontend
 * Hailey Devon Gorak - API
-* Akil Mohideen - API
+* Akil Mohideen - Frontend
 * Brendan Murphy Smith - API
 * Darren Dean Livioco Bansil - Database + Frontend
