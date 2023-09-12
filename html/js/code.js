@@ -92,6 +92,67 @@ function doRegister()
 }
 */
 
+function doRegister() {
+    firstName = document.getElementById("firstName").value;
+    lastName = document.getElementById("lastName").value;
+
+    let login = document.getElementById("login").value;
+    let password = document.getElementById("password").value;
+
+    if (!validSignUpForm(firstName, lastName, login, password)) {
+        document.getElementById("registrationResult").innerHTML = "invalid signup";
+        return;
+    }
+
+    var hash = md5(password);
+
+    document.getElementById("registrationResult").innerHTML = "";
+
+    let tmp = {
+        firstName: firstName,
+        lastName: lastName,
+        login: login,
+        password: hash
+    };
+
+    let jsonPayload = JSON.stringify(tmp);
+
+    let url = urlBase + '/Register.' + extension;
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+    try {
+        xhr.onreadystatechange = function () {
+
+            if (this.readyState != 4) {
+                return;
+            }
+
+            if (this.status == 409) {
+                document.getElementById("registrationResult").innerHTML = "User already exists";
+                return;
+            }
+
+            if (this.status == 200) {
+
+                let jsonObject = JSON.parse(xhr.responseText);
+                userId = jsonObject.id;
+                document.getElementById("registrationResult").innerHTML = "User added";
+                firstName = jsonObject.firstName;
+                lastName = jsonObject.lastName;
+                saveCookie();
+		window.location.href = "index.html";
+            }
+        };
+
+        xhr.send(jsonPayload);
+    } catch (err) {
+        document.getElementById("registrationResult").innerHTML = err.message;
+    }
+}
+
 function saveCookie()
 {
 	let minutes = 20;
