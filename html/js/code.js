@@ -1,4 +1,4 @@
-const urlBase = 'http://domainexpansion.xyz/LAMPAPI';
+const urlBase = 'http://www.domainexpansion.xyz/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
@@ -58,39 +58,70 @@ function doLogin()
 
 }
 
-/*
+
 function doRegister()
 {
-	firstName = document.getElementById("firstName").value;
-	lastName = document.getElementById("lastName").value;
-	let login = document.getElementById("login").value;
-	let password = document.getElementById("password").value;
+    firstName = document.getElementById("firstName").value;
+    lastName = document.getElementById("lastName").value;
 
-	let url = urlBase + '/Register.' + extension;
+    let login = document.getElementById("login").value;
+    let password = document.getElementById("password").value;
 
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	xhr.onreadystatechange = function() 
+   /* if (!validSignUpForm(firstName, lastName, login, password)) {
+        document.getElementById("registrationResult").innerHTML = "invalid signup";
+        return;
+    }*/
 
-	try
+	//var hash = md5(password);
+
+    document.getElementById("registrationResult").innerHTML = "";
+
+    let tmp = {
+        firstName: firstName,
+        lastName: lastName,
+        login: login,
+        password: password
+    };
+
+    let jsonPayload = JSON.stringify(tmp);
+
+    let url = urlBase + '/Register.' + extension;
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+    try {
+        xhr.onreadystatechange = function ()
 	{
-		xhr.onreadystatechange = function()
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
-				saveCookie();
 
-				window.location.href = "index.html";
-			}
-		};
-	}
-	catch(err)
-	{
-		document.getElementById("registrationResult").innerHTML = err.message;
-	}
+            if (this.readyState != 4) {
+		return;
+	    }
+
+            if (this.status == 404) {
+                document.getElementById("registrationResult").innerHTML = "User already exists";
+                return;
+            }
+
+            if (this.status == 200) {
+
+                let jsonObject = JSON.parse(xhr.responseText);
+                userId = jsonObject.id;
+                document.getElementById("registrationResult").innerHTML = "User added";
+                firstName = jsonObject.firstName;
+                lastName = jsonObject.lastName;
+                saveCookie();
+		window.location.href = "index.html";
+            }
+        };
+
+        xhr.send(jsonPayload);
+    } catch (err) {
+        document.getElementById("registrationResult").innerHTML = err.message;
+    }
 }
-*/
+
 
 function saveCookie()
 {
@@ -184,7 +215,7 @@ function searchContact()
 	let jsonPayload = JSON.stringify( tmp );
 
 	let url = urlBase + '/SearchContacts.' + extension;
-	
+
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -197,10 +228,12 @@ function searchContact()
 				document.getElementById("contactSearchResult").innerHTML = "Contact(s) has been retrieved";
 				let jsonObject = JSON.parse( xhr.responseText );
 				
-				for( let i=0; i<jsonObject.results.length; i++ )
+				var count = jsonObject.results.length;
+
+				for( let i=0; i<count; i++ )
 				{
 					contactList += jsonObject.results[i];
-					if( i < jsonObject.results.length - 1 )
+					if( i < count - 1 )
 					{
 						contactList += "<br />\r\n";
 					}
