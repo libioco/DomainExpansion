@@ -1,0 +1,127 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply a background color to the entire page */
+body {
+    background-color: #f2f2f2;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style the container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Style the header */
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    color: black;
+}
+
+/* Style the login form */
+.login-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 70%; /* Adjusted width */
+    margin: 0 15%; /* Adjusted margins */
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+    font-size: 30px; /* Adjusted font size */
+}
+
+/* Style the form fields and button */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 25px; /* Adjusted border radius */
+    text-align: center;
+    margin: 0 auto;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px; /* Adjusted font size */
+}
+
+button[type="button"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 20px; /* Adjusted font size */
+}
+
+button[type="button"]:hover {
+    background-color: #0056b3;
+}
+
+/* Style the "Need an account?" message */
+.need-account {
+    margin-top: 10px;
+}
+
+.need-account a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Style the login result message */
+#loginResult {
+    display: block;
+    font-size: 16px; /* Adjusted font size */
+    width: 90%;
+    text-align: center;
+    margin: 10px auto; /* Adjusted margins */
+    font-family: 'Ubuntu', sans-serif;
+    color: #95060a;
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 768px) {
+    .login-form {
+        max-width: 90%; /* Full width for mobile */
+        margin: 0 5%; /* Adjusted margins */
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 95%; /* Full width for mobile */
+    }
+
+    button[type="button"] {
+        width: 95%; /* Full width for mobile */
+    }
+}
