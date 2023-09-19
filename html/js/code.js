@@ -67,10 +67,10 @@ function doRegister()
     let login = document.getElementById("login").value;
     let password = document.getElementById("password").value;
 
-   /* if (!validSignUpForm(firstName, lastName, login, password)) {
+    if (!validSignUpForm(firstName, lastName, login, password)) {
         document.getElementById("registrationResult").innerHTML = "invalid signup";
         return;
-    }*/
+    }
 
 	//var hash = md5(password);
 
