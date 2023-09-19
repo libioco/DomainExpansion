@@ -1,4 +1,8 @@
 <?php
+	header('Access-Control-Allow-Origin: *');
+	header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+	header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+
 	$inData = getRequestInfo();
 	
 	$firstName = $inData["firstName"];
@@ -14,7 +18,7 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("INSERT into Contact (FirstName,LastName,Phone,Email,UserID) VALUES(?,?,?,?,?)");
+		$stmt = $conn->prepare("INSERT into Contact (firstName,lastName,phone,email,userId) VALUES(?,?,?,?,?)");
 		$stmt->bind_param("sssss", $firstName, $lastName, $phone, $email, $userId);
 		$stmt->execute();
 		$stmt->close();
