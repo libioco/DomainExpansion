@@ -1,7 +1,7 @@
 <?php
-	// header('Access-Control-Allow-Origin: *');
-	// header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
-	// header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+	header('Access-Control-Allow-Origin: *');
+	header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+	header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 
 	$inData = getRequestInfo();
 	
@@ -15,9 +15,9 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("select * from Contact where (firstName like ? || lastName like ? || email like ? || phone like ?) and UserID=?");
+		$stmt = $conn->prepare("select * from Contact where (name like ? || email like ? || phone like ?) and UserID=?");
 		$contactInfo = "%" . $inData["search"] . "%";
-		$stmt->bind_param("sssss", $contactInfo, $contactInfo, $contactInfo, $contactInfo, $inData["userId"]);
+		$stmt->bind_param("ssss", $contactInfo, $contactInfo, $contactInfo, $inData["userId"]);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
