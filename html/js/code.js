@@ -1,4 +1,4 @@
-const urlBase = 'http://domainexpansion.xyz/LAMPAPI';
+const urlBase = 'http://www.domainexpansion.xyz/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
@@ -320,11 +320,8 @@ function loadContacts() {
                 let jsonObject = JSON.parse(xhr.responseText);
                 if (jsonObject.error) {
                     console.log(jsonObject.error);
-<<<<<<< HEAD
-=======
 			let text = "<table border='1'></table>"
                 	document.getElementById("tableBody").innerHTML = text;
->>>>>>> 9fee1e1a348115d19082c1bdc371fb89e31f3027
                     return;
                 }
                 let text = "<table border='1'>"
@@ -335,9 +332,9 @@ function loadContacts() {
                     text += "<td id='last_Name" + i + "'><span>" + jsonObject.results[i].LastName + "</span></td>";
                     text += "<td id='email" + i + "'><span>" + jsonObject.results[i].Email + "</span></td>";
                     text += "<td id='phone" + i + "'><span>" + jsonObject.results[i].Phone + "</span></td>";
-                    text += "<td class='contactButtons'>" +
-                         "<button type='button' id='edit_button" + i + "' class='editButton' onclick='showEditContact("+jsonObject.results[i].ContactId+")'>" +"<span class='material-symbols-outlined'>edit</span>"+ "</button>" +
-                         "<button type='button' onclick='deleteContact(" + jsonObject.results[i].ContactId + ", row" + i + ")' class='deleteButton'>" +"<span class='material-symbols-outlined'>delete</span>"+ "</button>" + "</td>";
+                    text += "<td class='contactButtons'>" + 
+			"<button type='button' id='edit_button" + i + "' class='editButton' onclick='showEditContact("+jsonObject.results[i].ContactId+")'>" +"<span class='material-symbols-outlined'>edit</span>"+ "</button>" +
+			"<button type='button' onclick='deleteContact(" + jsonObject.results[i].ContactId + ", row" + i + ")' class='deleteButton'>" +"<span class='material-symbols-outlined'>delete</span>"+ "</button>" + "</td>";
                      text += "<tr/>"
                      console.log(i);
                 }
@@ -377,6 +374,8 @@ function restoreAfterAdd() {
     add.style.display = "none";
     contacts.style.display = "block";
     search.style.display = "block";
+
+   // window.location.href = "contacts.html";
 }   
 
 // function deleteContact(contactId, rowId) {
@@ -467,25 +466,15 @@ function showEditContact(contactId) {
     // document.getElementById("editContactLast").value = lastName;
     // document.getElementById("editContactEmail").value = email;
     // document.getElementById("editContactNumber").value = phone;
-<<<<<<< HEAD
-
-    var contacts = document.getElementById("contactTable");
-    var edit = document.getElementById("editContact");
-    var search = document.getElementById("search");
-=======
     var contacts = document.getElementById("contactTable");
     var edit = document.getElementById("editContact");
     var search = document.getElementById("search");
     var add = document.getElementById("addContact");
->>>>>>> 9fee1e1a348115d19082c1bdc371fb89e31f3027
 
     edit.style.display = "block";
     contacts.style.display = "none";
     search.style.display = "none";
-<<<<<<< HEAD
-=======
     add.style.display = "none";
->>>>>>> 9fee1e1a348115d19082c1bdc371fb89e31f3027
     // if (edit.style.display === "none") {
     //     edit.style.display = "block";
     //     contacts.style.display = "none";
@@ -515,10 +504,7 @@ function showEditContact(contactId) {
 // }
 
 function editContact(contactId) {
-<<<<<<< HEAD
-=======
 
->>>>>>> 9fee1e1a348115d19082c1bdc371fb89e31f3027
     const firstName = document.getElementById("editContactFirst").value;
     const lastName = document.getElementById("editContactLast").value;
     const email = document.getElementById("editContactEmail").value;
@@ -535,11 +521,7 @@ function editContact(contactId) {
 
     const jsonPayload = JSON.stringify(updatedContact);
 
-<<<<<<< HEAD
-    const url = urlBase + '/UpdateContact.' + extension;
-=======
     const url = urlBase + '/UpdateContacts.' + extension;
->>>>>>> 9fee1e1a348115d19082c1bdc371fb89e31f3027
 
     const xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
@@ -568,19 +550,14 @@ function restoreAfterEdit() {
     var edit = document.getElementById("editContact");
     var contacts = document.getElementById("contactTable");
     var search = document.getElementById("search");
-<<<<<<< HEAD
-    
-    edit.style.display = "none";
-    contacts.style.display = "block";
-    search.style.display = "block";
-=======
    var add = document.getElementById("addContact");
 
     edit.style.display = "none";
     contacts.style.display = "block";
     search.style.display = "block";
-    add.style.display = "block";
->>>>>>> 9fee1e1a348115d19082c1bdc371fb89e31f3027
+    add.style.display = "none";
+
+    window.location.href = "contacts.html";
 } 
 
 function validSignUpForm(fName, lName, user, pass)

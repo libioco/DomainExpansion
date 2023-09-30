@@ -1,29 +1,37 @@
 <html>
 <head>
-    <title>Domain Expansion</title>
-    <script type="text/javascript" src="js/md5.js"></script>
-    <script type="text/javascript" src="js/code.js"></script>
-    <link href="css/index.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+	<title>Domain Expansion</title>
+	<script type="text/javascript" src="js/md5.js"></script>
+	<script type="text/javascript" src="js/code.js"></script>
+    <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1 class="header">Welcome to Domain Expansion!</h1>
-        <form class="login-form" id="login-form">
-            <h2>Login</h2>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="loginName" name="username" required>
+    <div class="app">
+        <div class="container">
+            <div class="hero">
+                <h1 class="title">Domain Expansion</h1>
+                <h2 class="header">The Anime Contact App</h2>
             </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="loginPassword" name="password" required>
+            <div class="login-container">
+                <div class="login">
+                    <h2>Sign In</h2>
+                    <form class="form">
+                        <input required id="loginName" type="text" placeholder="Username"/>
+                        <input required id="loginPassword" type="password" placeholder="Password"/>
+                        <button type="button" id="loginButton" class="buttons" onclick="doLogin();">Continue</button>
+                        <span id="loginResult"></span>
+    
+                        <span class="register-span">
+                            Need an account? <a href="register.html">Register here</a>
+                        </span>
+                    </form>
+                </div>
             </div>
-            <button type="button" id="loginButton" onclick="doLogin()">Log In</button>
-            <p class="need-account">Need an account? <a href="register.html">Register</a></p>
-        </form>
-        <span id="loginResult"></span>
+            
+        </div>
     </div>
+        
+
 
 </body>
 </html>
